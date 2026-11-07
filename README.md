@@ -43,4 +43,4 @@ sentiment-app/
 | Rôle | Nom | Identifiant GitHub | Travail de la semaine 1 |
 | --- | --- | --- | --- |
 | Membre A | KHALD Hiba | @Hiba-khald | Cadrage des 3 fiches, environnement Python, création du dépôt GitHub |
-| Membre B | [ROUROU Rim ] | [@Rimrr] | Clone du dépôt, installation de l'environnement, relecture des fiches de cadrage |
+| Membre B | ROUROU Rim | @Rimrr | Clone du dépôt, installation de l'environnement, relecture des fiches de cadrage |
