@@ -1,0 +1,9 @@
+text,label
+"Livraison rapide, très satisfait",positive
+"Produit de très bonne qualité, produit conforme à la description",positive
+"Parfait, merci, produit conforme à la description",positive
+"Service client lent mais je recommande",positive
+"Très déçu, aucune réponse du vendeur",negative
+"Service client injoignable, produit non conforme",negative
+"Qualité correcte mais commande jamais reçue",negative
+"Produit reçu dans un carton standard. Colis abîmé",negative

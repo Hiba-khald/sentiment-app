@@ -15,6 +15,10 @@ models/*
 data/*
 !data/.gitkeep
 !data/sample_reviews.csv
+!data/avis_exemple.csv
+!data/jeu_or.csv
+src/sentiment_app/modele/*.joblib
+docs/livrable-tp4.txt
 mlruns/
 mlflow.db
 
