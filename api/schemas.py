@@ -1,5 +1,5 @@
-"""Le contrat de l'API écrit dans des types."""
-from typing import Literal
+"""Le contrat de l'API écrit dans des types (version TP 2)."""
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -29,3 +29,26 @@ class PredictResponse(BaseModel):
 class HealthResponse(BaseModel):
     status: str
     model: str
+
+
+class ModeleResponse(BaseModel):
+    """Réservé aux administrateurs : réglage de l'abstention et métriques du modèle."""
+    model: str
+    seuil_abstention: float
+    metriques: dict[str, Any]
+
+
+class ChampInvalide(BaseModel):
+    champ: str
+    message: str
+
+
+class DetailErreur(BaseModel):
+    code: str = Field(..., description="Code stable, à tester côté client : ENTREE_INVALIDE, NON_AUTHENTIFIE...")
+    message: str = Field(..., description="Message lisible, susceptible de changer")
+    champs: list[ChampInvalide] = Field(default_factory=list)
+
+
+class ErreurV1(BaseModel):
+    """Format unique de toutes les erreurs de /v1."""
+    erreur: DetailErreur

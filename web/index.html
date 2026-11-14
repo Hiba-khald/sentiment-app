@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analyse d'avis clients</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+    label { display: block; margin-top: 1rem; font-weight: 600; }
+    input, textarea { width: 100%; box-sizing: border-box; padding: .5rem; font: inherit; }
+    button { margin-top: 1rem; padding: .5rem 1.2rem; font: inherit; cursor: pointer; }
+    #resultat { margin-top: 1.5rem; padding: .8rem; border-left: 4px solid #888; background: #f4f4f4; }
+    #resultat.ok { border-color: #2e7d32; } #resultat.erreur { border-color: #b3261e; color: #b3261e; }
+    small { color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Analyse d'avis clients</h1>
+  <small>Client web de l'API /v1 : la page n'a pas de modèle, elle appelle l'API.</small>
+
+  <label for="api">Adresse de l'API</label>
+  <input id="api" value="http://127.0.0.1:8000">
+
+  <label for="cle">Clé d'API</label>
+  <input id="cle" type="password" autocomplete="off">
+
+  <label for="texte">Avis à analyser</label>
+  <textarea id="texte" rows="4"></textarea>
+
+  <button id="go">Analyser</button>
+  <div id="resultat" hidden></div>
+  <p><small>La clé reste dans cette page : elle n'est ni enregistrée ni envoyée ailleurs qu'à l'API.</small></p>
+
+  <script src="client.js"></script>
+  <script>
+    document.getElementById("go").addEventListener("click", async () => {
+      const zone = document.getElementById("resultat");
+      const r = await analyser(
+        document.getElementById("api").value,
+        document.getElementById("cle").value,
+        document.getElementById("texte").value);
+      zone.hidden = false;
+      zone.className = r.ok ? "ok" : "erreur";
+      zone.textContent = r.ok ? r.libelle + " — " + r.confiance : r.message;
+    });
+  </script>
+</body>
+</html>
