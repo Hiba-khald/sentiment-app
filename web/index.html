@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analyse d'avis clients</title>
+  <style>
+    :root { --fond:#f4f6fb; --carte:#fff; --texte:#1c2333; --doux:#667085; --bord:#d8dde8;
+            --accent:#2b4a7d; --ok:#2e7d32; --ko:#c62828; --doute:#b26a00; }
+    @media (prefers-color-scheme: dark) {
+      :root { --fond:#0f1420; --carte:#181f2e; --texte:#e8ecf5; --doux:#9aa4b8; --bord:#2b3448; --accent:#7fa3e0; }
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; padding:2rem 1rem; background:var(--fond); color:var(--texte);
+           font-family: system-ui, "Segoe UI", sans-serif; }
+    main { max-width: 640px; margin: 0 auto; }
+    h1 { margin:0 0 .25rem; font-size:1.6rem; }
+    .sous-titre { color:var(--doux); margin:0 0 1.5rem; font-size:.9rem; }
+    .carte { background:var(--carte); border:1px solid var(--bord); border-radius:10px; padding:1.25rem; }
+    .ligne { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1rem; }
+    label { display:block; font-size:.8rem; font-weight:600; margin-bottom:.3rem; }
+    input, textarea { width:100%; padding:.55rem .65rem; border:1px solid var(--bord); border-radius:6px;
+                      background:var(--fond); color:var(--texte); font:inherit; }
+    textarea { min-height:110px; resize:vertical; }
+    button { margin-top:1rem; padding:.6rem 1.2rem; border:0; border-radius:6px; cursor:pointer;
+             background:var(--accent); color:#fff; font-weight:600; font-size:.95rem; }
+    button:disabled { opacity:.6; cursor:wait; }
+    #resultat { margin-top:1rem; padding:.9rem 1rem; border-left:5px solid var(--bord);
+                border-radius:6px; background:var(--fond); display:none; }
+    #resultat.positif { border-color:var(--ok); }
+    #resultat.negatif { border-color:var(--ko); }
+    #resultat.doute { border-color:var(--doute); }
+    #resultat.erreur { border-color:var(--ko); color:var(--ko); }
+    #titre-resultat { font-weight:700; }
+    .barre { height:8px; background:var(--bord); border-radius:4px; margin-top:.5rem; overflow:hidden; }
+    #jauge { height:100%; width:0; background:var(--accent); }
+    .note { margin-top:1rem; font-size:.75rem; color:var(--doux); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Analyse d'avis clients</h1>
+  <p class="sous-titre">Client web de l'API /v1 du cours : cette page n'a pas de modèle, elle appelle l'API.</p>
+  <div class="carte">
+    <div class="ligne">
+      <div><label for="url">Adresse de l'API</label>
+           <input id="url" value="http://127.0.0.1:8000"></div>
+      <div><label for="cle">Clé d'API</label>
+           <input id="cle" type="password" autocomplete="off"></div>
+    </div>
+    <label for="texte">Avis à analyser</label>
+    <textarea id="texte" placeholder="Ex : Livraison rapide, produit conforme, très satisfait"></textarea>
+    <button id="bouton">Analyser</button>
+    <div id="resultat" role="status">
+      <div id="titre-resultat"></div>
+      <div id="detail"></div>
+      <div class="barre"><div id="jauge"></div></div>
+    </div>
+    <p class="note">La clé reste dans cette page : elle n'est ni enregistrée ni envoyée ailleurs qu'à l'API.</p>
+  </div>
+</main>
+<script src="client.js"></script>
+</body>
+</html>
