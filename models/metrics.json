@@ -1,0 +1,7 @@
+{
+  "source": "demo",
+  "n_train": 232,
+  "n_test": 58,
+  "f1_macro": 1.0,
+  "seuil_f1": 0.85
+}
