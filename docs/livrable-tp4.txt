@@ -6,6 +6,6 @@
 [OK] CHANGELOG.md décrit cette version
 [OK] étiquette Git sur le dernier commit : v1.0.0
 [OK] installation de la roue dans un environnement neuf
-[ÉCHEC] tests lancés sur le paquet installé : 6 failed in 0.69s
+[ÉCHEC] tests lancés sur le paquet installé : 6 failed in 0.55s
 [ÉCHEC] commande installée : ModuleNotFoundError: No module named 'sentiment_app.cli'
 Bilan : NON CONFORME
